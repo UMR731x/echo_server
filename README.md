@@ -31,7 +31,6 @@ python --version
    ```bash
    python3 main.py
    ```
-
 ---
 
 ## 🎮 玩法指南
